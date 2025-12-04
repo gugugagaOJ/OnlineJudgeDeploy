@@ -3,14 +3,16 @@ version: "3"
 services:
 
   oj-redis:
-    image: redis:7-alpine
+    image: redis:alpine
+    container_name: oj-redis
     restart: always
     volumes:
       - ./data/redis:/data
     command: ["redis-server", "--appendonly", "yes"]
 
   oj-postgres:
-    image: postgres:14-alpine
+    image: postgres:17-alpine
+    container_name: oj-postgres
     restart: always
     environment:
       POSTGRES_DB: onlinejudge
@@ -22,7 +24,7 @@ services:
   oj-judge:
     image: ghcr.io/gugugagaoj/judgeserver:latest
     restart: always
-
+    container_name: oj-judge
     environment:
       SERVICE_URL: http://oj-judge:8080
       BACKEND_URL: http://oj-backend:8000/api/judge_server_heartbeat/
@@ -47,7 +49,7 @@ services:
   oj-backend:
     image: ghcr.io/gugugagaoj/onlinejudge:latest
     restart: always
-
+    container_name: oj-backend
     depends_on:
       - oj-redis
       - oj-postgres
