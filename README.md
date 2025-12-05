@@ -1,23 +1,47 @@
-简体中文 | [English](https://github.com/QingdaoU/OnlineJudgeDeploy/blob/2.0/README.en.md)
+简体中文 | [English](https://github.com/gugugagaOJ/OnlineJudgeDeploy/blob/master/README.en.md)
+
 
 ## 环境准备
 
 ### Linux 环境
 
-1. 安装必要的依赖
+1. **安装 Docker 和 Docker Compose**
 
-    ```bash
-    sudo apt-get update && sudo apt-get install -y vim python3-pip curl git
-    pip3 install --upgrade pip
-    pip install docker-compose
-    ```
+   本项目已经将所有依赖打包进 Docker 镜像，您只需要确保系统中已经安装了 Docker 和 Docker Compose 即可。
 
-2. 安装 Docker 
+   * 安装 Docker：
 
-    国内用户使用脚本一键安装: `sudo curl -sSL https://get.daocloud.io/docker | sh`  
-    国外用户使用脚本一键安装: `sudo curl -sSL get.docker.com | sh`
-    
-    详细步骤参照： [https://docs.docker.com/install/](https://docs.docker.com/install/)
+     * 国内用户可以使用以下脚本一键安装 Docker：
+
+       ```bash
+       sudo curl -sSL https://get.daocloud.io/docker | sh
+       ```
+
+     * 国外用户可以使用以下脚本一键安装 Docker：
+
+       ```bash
+       sudo curl -sSL get.docker.com | sh
+       ```
+
+   * 安装 Docker Compose：
+
+     ```bash
+     sudo apt-get update && sudo apt-get install -y docker-compose
+     ```
+
+   详细的安装步骤可以参考官方文档：[Docker 安装文档](https://docs.docker.com/install/)
+
+2. **安装 Git 和必要的工具（可选）**
+
+   如果你的系统中还没有安装 Git 和其他常用工具，可以使用以下命令进行安装：
+
+   ```bash
+   sudo apt-get update && sudo apt-get install -y git curl vim
+   ```
+
+   这些工具并非必须，但如果你需要进行一些定制化配置或调试，它们会非常有用。
+
+
 
 ### Windows 环境
 
@@ -37,7 +61,7 @@ Windows 下的安装仅供体验，勿在生产环境使用。如有必要，请
 1. 请选择磁盘空间富余的位置，运行下面的命令
 
     ```bash
-    git clone -b 2.0 https://github.com/QingdaoU/OnlineJudgeDeploy.git && cd OnlineJudgeDeploy
+    git clone https://github.com/gugugagaOJ/OnlineJudgeDeploy.git && cd OnlineJudgeDeploy
     ```
 
 2. 启动服务
@@ -45,6 +69,7 @@ Windows 下的安装仅供体验，勿在生产环境使用。如有必要，请
     ```bash
     docker-compose up -d
     ```
+
 
 根据网速情况，大约5到30分钟就可以自动搭建完成，全程无需人工干预。
 
